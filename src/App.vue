@@ -1,31 +1,51 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="board">
+      <List  v-for="list in lists" :key="list.id" :list="list"/>
     </div>
-    <router-view/>
+    <ModalListItem/>
   </div>
 </template>
 
+<script>
+import List from './components/List'
+import ModalListItem from './components/ModalListItem'
+
+export default {
+  name: 'app',
+  data () {
+    return {
+      lists: [
+        {
+          'id': 1,
+          'title': 'Проект 1'
+        },
+        {
+          'id': 2,
+          'title': 'Проект 2'
+        }
+      ]
+    }
+  },
+  components: {
+    ModalListItem,
+    List
+  },
+  methods: {}
+
+}
+
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #board {
+    padding: 20px;
+  }
 </style>
